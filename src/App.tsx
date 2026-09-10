@@ -55,6 +55,8 @@ function App() {
   const notify = (message: string) => { setNotice(message); window.setTimeout(() => setNotice(''), 2400) }
   const openProject = (nextProject = projects[0]) => { setProject(nextProject); setProjectDetailOpen(true); setView('projects') }
   const publicSite = role === 'public'
+  void ProjectDetail
+  void ProjectRecord
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [role, view, projectDetailOpen])
