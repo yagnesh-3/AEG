@@ -3,3 +3,39 @@
 body { margin: 0; min-width: 320px; }
 button { font: inherit; }
 button:focus-visible { outline: 3px solid #b56d3e; outline-offset: 3px; }
+
+.new-project-modal {
+	width: min(620px, 100%);
+	max-height: calc(100svh - 40px);
+	overflow-y: auto;
+}
+
+.new-project-form select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #dfe1da;
+	background: #f5f5ef;
+	color: #29312f;
+	font: inherit;
+	font-size: 12px;
+}
+
+.form-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 9px;
+	margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+	.new-project-modal { padding: 27px 20px; }
+	.form-row { grid-template-columns: 1fr; }
+	.form-actions { flex-direction: column-reverse; }
+	.form-actions button { width: 100%; }
+}
