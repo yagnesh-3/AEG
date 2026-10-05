@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useData } from '../../context/DataContext'
 import { blogPosts, faqItems, heroSlides, services, storyStats, timelineMilestones, values } from '../../data/content'
-import AiAssistant from '../../components/AiAssistant'
 
 export default function Home() {
   const { projects } = useData()
@@ -35,10 +34,9 @@ export default function Home() {
             </div>
 
             <div className="cta-panel">
-              <h3>Match me to a project</h3>
-              <p className="cta-panel-note">Use our AI matcher to find opportunities that fit your goals.</p>
-              <button type="button" className="button button-solid full-width" onClick={() => navigate('/contact')}>Open project matcher</button>
-              <button type="button" className="button button-outline full-width" onClick={() => navigate('/login')}>Investor login</button>
+              <h3>Have a project in mind?</h3>
+              <p className="cta-panel-note">Talk with our team about a project, property or potential collaboration.</p>
+              <button type="button" className="button button-solid full-width" onClick={() => navigate('/contact')}>Make an enquiry</button>
             </div>
           </div>
         </div>
@@ -61,9 +59,9 @@ export default function Home() {
         </div>
         <div className="about-copy">
           <span className="eyebrow">About Alliance Estate Group</span>
-          <h2>Your Trusted Investment Partner</h2>
-          <p>We bring together smart property strategy, disciplined execution and transparent investor communication across both local and international opportunities.</p>
-          <p>From residential communities to commercial growth assets, our team identifies opportunities with clear fundamentals and a long-term view on value creation.</p>
+          <h2>Your Trusted Property Partner</h2>
+          <p>We bring together local knowledge, careful planning and practical expertise across property projects in Australia and select international markets.</p>
+          <p>From residential communities to commercial places, our team takes a thoughtful, long-term view of every project.</p>
           <button type="button" className="button button-solid" onClick={() => navigate('/about')}>More info</button>
         </div>
       </section>
@@ -105,7 +103,6 @@ export default function Home() {
                 <span className="project-category">{project.category}</span>
                 <h3>{project.name}</h3>
                 <p>{project.location}</p>
-                <small>{project.stats}</small>
                 <button type="button" className="card-link" onClick={() => navigate(`/projects/${project.id}`)}>View project →</button>
               </div>
             </article>
@@ -118,7 +115,7 @@ export default function Home() {
           <div className="track-copy">
             <span className="eyebrow">Our Track Record</span>
             <h2>Delivered with discipline, strategy and measurable outcomes.</h2>
-            <p>Our work spans residential, commercial and rural opportunities backed by local understanding and a consistent investment lens.</p>
+            <p>Our work spans residential, commercial and rural property, guided by local understanding and a long-term perspective.</p>
             <div className="track-stats">
               {storyStats.map((item) => (
                 <div key={item.label} className="mini-stat">
@@ -166,18 +163,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="insights-section" id="ai-tools">
-        <div className="container insights-grid-ai">
-          <div className="insight-copy">
-            <span className="eyebrow">AI-assisted tools</span>
-            <h2>Smarter support for enquiries, matching and reporting.</h2>
-            <p>Ask our assistant anything about the portfolio, or use the project matcher on the contact page to find opportunities aligned to your goals.</p>
-            <button type="button" className="button button-solid" onClick={() => navigate('/contact')}>Try the project matcher</button>
-          </div>
-          <AiAssistant />
         </div>
       </section>
 

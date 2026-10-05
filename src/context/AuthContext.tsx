@@ -11,7 +11,6 @@ type AuthContextValue = {
   accounts: DemoAccount[]
   login: (accountId: string) => DemoAccount | null
   loginByEmail: (email: string) => DemoAccount | null
-  logout: () => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -48,7 +47,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (account) setCurrentUser(account)
       return account
     },
-    logout: () => setCurrentUser(null),
   }), [currentUser])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

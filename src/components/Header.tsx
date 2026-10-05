@@ -1,9 +1,7 @@
-// Site header with role-aware navigation. Public nav for everyone; portal/admin
-// links appear based on the logged-in role, plus a login/logout control.
+// Public navigation does not include links to the private portal or admin area.
 
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { NavLink } from 'react-router-dom'
 
 const publicNav = [
   { to: '/', label: 'Home', end: true },
@@ -15,8 +13,6 @@ const publicNav = [
 ]
 
 export default function Header() {
-  const { currentUser, role, logout } = useAuth()
-  const navigate = useNavigate()
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -28,12 +24,6 @@ export default function Header() {
   }, [])
 
   const close = () => setNavOpen(false)
-
-  const handleLogout = () => {
-    logout()
-    close()
-    navigate('/')
-  }
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
@@ -58,16 +48,6 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
-          {role === 'investor' && (
-            <NavLink to="/portal" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={close}>
-              My Portal
-            </NavLink>
-          )}
-          {(role === 'admin' || role === 'staff') && (
-            <NavLink to="/admin" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={close}>
-              Admin
-            </NavLink>
-          )}
         </nav>
 
         <div className="header-actions">
@@ -76,14 +56,6 @@ export default function Header() {
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
           </div>
-          {currentUser ? (
-            <div className="user-chip">
-              <span>{currentUser.name}<small>{currentUser.role}</small></span>
-              <button type="button" className="button button-outline-dark" onClick={handleLogout}>Log out</button>
-            </div>
-          ) : (
-            <button type="button" className="button button-solid" onClick={() => { navigate('/login'); close() }}>Investor Login</button>
-          )}
           <button type="button" className="nav-toggle" aria-label="Toggle navigation" aria-expanded={navOpen} onClick={() => setNavOpen((p) => !p)}>
             <span />
             <span />

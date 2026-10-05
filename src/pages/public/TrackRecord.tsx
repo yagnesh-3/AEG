@@ -30,7 +30,7 @@ export default function TrackRecord() {
 
         <section className="content-panel">
           <h3>Delivery footprint</h3>
-          <p className="track-intro">AEG has delivered projects across {locations.length} regions, spanning residential, commercial, farming and international holdings. Our completed projects have consistently realised investor returns above target.</p>
+          <p className="track-intro">AEG has delivered projects across {locations.length} regions, spanning residential, commercial, farming and international property.</p>
           <div className="footprint-tags">
             {locations.map((loc) => <span key={loc} className="chip">{loc}</span>)}
           </div>
@@ -43,8 +43,7 @@ export default function TrackRecord() {
               <div key={p.id} className="completed-card">
                 <strong>{p.name}</strong>
                 <span>{p.location}</span>
-                <p>{p.returnRate} realised return</p>
-                <small>{p.stats}</small>
+                <small>{p.category}</small>
               </div>
             ))}
           </div>

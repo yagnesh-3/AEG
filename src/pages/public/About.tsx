@@ -7,7 +7,7 @@ export default function About() {
         <div className="container page-hero-inner">
           <div>
             <span className="eyebrow">About us</span>
-            <h1>Your trusted investment partner.</h1>
+            <h1>Your trusted property partner.</h1>
           </div>
         </div>
       </section>
@@ -19,9 +19,9 @@ export default function About() {
           </div>
           <div className="panel-copy">
             <span className="eyebrow">Who we are</span>
-            <h2>We create value by aligning capital with disciplined property execution.</h2>
-            <p>Alliance Estate Group partners with investors, communities, and stakeholders to source property opportunities that combine strategic relevance with long-term financial confidence.</p>
-            <p>Our model is built around transparency, clear governance, and measurable progress—making delivery disciplines as visible as the opportunity itself. We manage a live portfolio spanning residential, commercial, farming and international holdings across Australia, Dubai and India.</p>
+            <h2>We create lasting places through thoughtful property development.</h2>
+            <p>Alliance Estate Group works with communities and project partners to shape property projects that respond to their setting and create lasting value for the people around them.</p>
+            <p>Our approach is built around clear communication, considered planning and practical delivery. We work across residential, commercial, farming and international property in Australia, Dubai and India.</p>
           </div>
         </section>
 

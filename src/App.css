@@ -270,6 +270,7 @@ img { display: block; width: 100%; }
 .section-heading { margin-bottom: 34px; }
 .section-heading.center { text-align: center; }
 .section-heading h2 { max-width: 760px; }
+.section-heading.center h2 { margin-inline: auto; }
 .split-heading { display: flex; justify-content: space-between; align-items: end; gap: 10px; }
 .value-grid, .project-grid, .service-grid, .blog-grid, .ai-grid { display: grid; gap: 28px; }
 .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

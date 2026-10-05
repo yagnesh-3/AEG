@@ -71,7 +71,6 @@ export default function Projects() {
                 </div>
                 <h3>{project.name}</h3>
                 <p>{project.location}</p>
-                <small>{project.stats}</small>
                 <button type="button" className="card-link" onClick={() => navigate(`/projects/${project.id}`)}>View details →</button>
               </div>
             </article>

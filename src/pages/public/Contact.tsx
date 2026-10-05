@@ -1,25 +1,13 @@
-// Public contact page. Three working, mock-data features:
-//  1. Enquiry form  -> writes to the admin enquiry inbox
-//  2. AI project matcher -> ranks projects client-side
-//  3. Feedback form -> writes to the admin feedback list
+// Public contact page with enquiry and feedback forms.
 
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useData } from '../../context/DataContext'
-import { matchProjects, type MatchResult } from '../../ai/mockAssistant'
-import AiAssistant from '../../components/AiAssistant'
-
-const CATEGORY_OPTIONS = ['Any', 'Residential Land', 'Commercial Land', 'Farming Land', 'Dubai Property', 'Property – India', 'Other']
 
 export default function Contact() {
-  const { projects, addEnquiry, addFeedback } = useData()
-  const navigate = useNavigate()
+  const { addEnquiry, addFeedback } = useData()
 
   const [enquiry, setEnquiry] = useState({ name: '', email: '', subject: '', message: '' })
   const [enquirySent, setEnquirySent] = useState(false)
-
-  const [match, setMatch] = useState({ category: 'Any', budget: 30, goal: 'growth' as 'growth' | 'income' | 'balanced' })
-  const [matches, setMatches] = useState<MatchResult[] | null>(null)
 
   const [feedback, setFeedback] = useState({ name: '', rating: 5, comment: '' })
   const [feedbackSent, setFeedbackSent] = useState(false)
@@ -39,11 +27,6 @@ export default function Contact() {
     })
     setEnquirySent(true)
     setEnquiry({ name: '', email: '', subject: '', message: '' })
-  }
-
-  const runMatch = (e: React.FormEvent) => {
-    e.preventDefault()
-    setMatches(matchProjects(match, projects))
   }
 
   const submitFeedback = (e: React.FormEvent) => {
@@ -97,62 +80,6 @@ export default function Contact() {
             <li><strong>Address:</strong> 18/160 Pacific Hwy, Sydney NSW</li>
             <li><strong>Hours:</strong> Monday – Friday, 9am – 5pm</li>
           </ul>
-        </section>
-      </div>
-
-      <div className="container matcher-section">
-        <section className="content-panel">
-          <div className="section-heading">
-            <span className="eyebrow">AI project matcher</span>
-            <h2 className="matcher-heading">Find opportunities that fit your goals.</h2>
-          </div>
-          <form className="matcher-form" onSubmit={runMatch}>
-            <label>
-              Category
-              <select value={match.category} onChange={(e) => setMatch((p) => ({ ...p, category: e.target.value }))}>
-                {CATEGORY_OPTIONS.map((c) => <option key={c} value={c}>{c}</option>)}
-              </select>
-            </label>
-            <label>
-              Max budget: ${match.budget}m
-              <input type="range" min={5} max={45} value={match.budget} onChange={(e) => setMatch((p) => ({ ...p, budget: Number(e.target.value) }))} />
-            </label>
-            <label>
-              Goal
-              <select value={match.goal} onChange={(e) => setMatch((p) => ({ ...p, goal: e.target.value as typeof match.goal }))}>
-                <option value="growth">Capital growth</option>
-                <option value="income">Steady income</option>
-                <option value="balanced">Balanced</option>
-              </select>
-            </label>
-            <button type="submit" className="button button-solid">Match me</button>
-          </form>
-
-          {matches && (
-            <div className="match-results">
-              {matches.map((m) => (
-                <div key={m.project.id} className="match-card">
-                  <div className="match-score">{m.score}</div>
-                  <div className="match-body">
-                    <strong>{m.project.name}</strong>
-                    <span>{m.project.location} • {m.project.category} • {m.project.returnRate}</span>
-                    <small>Why: {m.reason}</small>
-                  </div>
-                  <button type="button" className="card-link" onClick={() => navigate(`/projects/${m.project.id}`)}>View →</button>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-      </div>
-
-      <div className="container matcher-section">
-        <section className="content-panel">
-          <div className="section-heading">
-            <span className="eyebrow">Ask AEG</span>
-            <h2 className="matcher-heading">Chat with our AI assistant.</h2>
-          </div>
-          <AiAssistant />
         </section>
       </div>
 

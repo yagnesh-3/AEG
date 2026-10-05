@@ -20,7 +20,7 @@ export default function Footer() {
               <small>Group</small>
             </span>
           </div>
-          <p>Strategic property investment, project delivery and long-term value creation across Australian and select international markets.</p>
+          <p>Thoughtful property development, project delivery and lasting places across Australian and select international markets.</p>
           <div className="socials footer-socials">
             <a href="https://facebook.com" target="_blank" rel="noreferrer">f</a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">in</a>
